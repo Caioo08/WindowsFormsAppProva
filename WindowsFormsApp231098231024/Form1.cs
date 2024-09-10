@@ -23,24 +23,23 @@ namespace WindowsFormsApp231098231024
         {
             int quant = int.Parse(txtQtd.Text);
             double valor = int.Parse(txtVl.Text);
-            dgvProdutos.Rows.Add(txtProduto.Text, txtQtd.Text, txtVl.Text);
+            total += quant * valor;
+            dgvProdutos.Rows.Add(txtProduto.Text, txtQtd.Text, txtVl.Text, total);
             txtProduto.Text = "";
             txtQtd.Text = "";
             txtVl.Text = "";
             txtProduto.Focus();
             MessageBox.Show("Produto incluído", "Inclusão", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            total += quant * valor;
             lblTotal.Text = total.ToString();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            if (dgvProdutos.RowCount > 0)
-            {
-                dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
-                
-                MessageBox.Show("Produto excluído", "Exclusão", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            double remover = double.Parse(dgvProdutos.CurrentRow.Cells["TOTALL"].Value.ToString());
+
+            dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentCell.RowIndex);
+            total -= remover;
+            lblTotal.Text = total.ToString();
         }
 
         private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -53,8 +52,13 @@ namespace WindowsFormsApp231098231024
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            dgvProdutos.SelectedCells[0].Value = txtAlterar.Text;
-            MessageBox.Show("Aluno alterado", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            double tot = double.Parse(dgvProdutos.CurrentRow.Cells[1].Value.ToString()) * double.Parse(dgvProdutos.CurrentRow.Cells[2].Value.ToString());
+            dgvProdutos.CurrentRow.Cells[1].Value = txtAlterar.Text;
+            double ago = double.Parse(dgvProdutos.CurrentRow.Cells[1].Value.ToString()) * double.Parse(dgvProdutos.CurrentRow.Cells[2].Value.ToString());
+            double tota = double.Parse(lblTotal.Text);
+            lblTotal.Text = ((total - tot) + ago).ToString();
+            MessageBox.Show("Produto alterado", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

@@ -50,6 +50,7 @@
             this.PRODUTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QUANTIDADE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VUNITARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTALL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,12 +97,14 @@
             // dgvProdutos
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
+            this.dgvProdutos.AllowUserToDeleteRows = false;
             this.dgvProdutos.AllowUserToOrderColumns = true;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PRODUTO,
             this.QUANTIDADE,
-            this.VUNITARIO});
+            this.VUNITARIO,
+            this.TOTALL});
             this.dgvProdutos.Location = new System.Drawing.Point(25, 222);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
@@ -259,6 +262,13 @@
             this.VUNITARIO.Name = "VUNITARIO";
             this.VUNITARIO.ReadOnly = true;
             // 
+            // TOTALL
+            // 
+            this.TOTALL.HeaderText = "TOTAL";
+            this.TOTALL.Name = "TOTALL";
+            this.TOTALL.ReadOnly = true;
+            this.TOTALL.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +325,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PRODUTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn QUANTIDADE;
         private System.Windows.Forms.DataGridViewTextBoxColumn VUNITARIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTALL;
     }
 }
 
