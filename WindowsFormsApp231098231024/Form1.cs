@@ -58,7 +58,7 @@ namespace WindowsFormsApp231098231024
             double tota = double.Parse(lblTotal.Text);
             lblTotal.Text = ((total - tot) + ago).ToString();
             MessageBox.Show("Produto alterado", "Alteração", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+            txtAlterar.Clear();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
